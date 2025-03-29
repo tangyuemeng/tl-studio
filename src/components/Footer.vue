@@ -1,13 +1,13 @@
 <template>
     <div class="flex w-full flex-col md:flex-row">
         <button
-            class="text-xl text-center md:w-1/2 w-full border-t-2 border-r-1 relative flex flex-col items-center justify-center font-bold py-20 bg-black">
+            class="text-xl text-center md:w-1/2 w-full border-t-2 md:border-r-1 relative flex flex-col items-center justify-center font-bold py-20 bg-black">
             FAQ
             <p class="text-5xl mt-2">FAQ</p>
         </button>
 
         <button
-            class="text-xl text-center md:w-1/2 w-full border-t-2 border-l-1 relative flex flex-col items-center justify-center font-bold py-20 bg-black">
+            class="text-xl text-center md:w-1/2 w-full border-t-2 md:border-l-1 relative flex flex-col items-center justify-center font-bold py-20 bg-black">
             CONTACT US
             <p class="text-5xl mt-2">CONTACT US</p>
         </button>
@@ -24,11 +24,11 @@
     <div class="w-full border-t border-black bg-white text-black text-sm px-[50px] py-8">
         <div class="mx-auto flex flex-col gap-6">
             <div class="flex flex-col items-start md:flex-row md:gap-[70px] text-center md:text-left text-gray-700">
-                <b class="text-[14px] text-black mb-4 md:mb-0 max-md:mx-auto">(주)원밀리언</b>
+                <b class="text-[14px] text-black mb-4 md:mb-0 max-md:mx-auto">BUZZ Group Inc.</b>
                 <div class="md:w-[500px] w-full flex flex-col items-start gap-1 text-[#909090]">
-                    <p class="max-md:mx-auto">사업장주소 : 서울특별시 성동구 뚝섬로13길 33</p>
-                    <p class="max-md:mx-auto">사업자등록번호 : 358-81-01080</p>
-                    <p class="max-md:mx-auto">통신판매신고번호 : 제2019-서울성동-01944</p>
+                    <p class="max-md:mx-auto">Address : 東京都新宿区北新宿1-1-20 プリオール三信ビルB1</p>
+                    <p class="max-md:mx-auto">Phone : 070-3179-0613</p>
+                    <p class="max-md:mx-auto">E-mail : info@tl-entertainment.co</p>
                 </div>
             </div>
 

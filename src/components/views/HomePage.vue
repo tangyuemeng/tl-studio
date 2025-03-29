@@ -6,29 +6,27 @@
     </video>
   </div>
 
-  <div class="flex flex-col w-screen text-3xl font-sans font-bold p-4 items-center justify-center">
-    <p class="w-full text-center">WE DON'T NEED</p>
+  <div class="flex flex-col w-full font-bold items-center justify-center">
+    <p class="w-full text-center">WE create</p>
     <p class="w-full text-center">WE DON'T NEED</p>
     <p class="w-full text-center">WE DON'T NEED</p>
   </div>
 
-  <div class="flex w-screen h-auto">
-    <div class="w-1/2 aspect-square border-t-2 border-r-1 relative">
-      <img class="w-full h-auto object-cover -z-10 absolute opacity-50" src="../../assets/instructor_bg.png" />
-      <div class="text-6xl text-center h-full w-full flex flex-col items-center justify-center font-bold">
+  <div class="flex w-full flex-col md:flex-row">
+    <div class="w-full md:w-1/2 aspect-square border-t-2 md:border-r-1 bg-[url('/instructor_bg.png')] bg-cover flex items-center justify-center">
+      <div class="text-6xl text-center flex flex-col items-center justify-center font-bold gap-y-8">
         Instructor
-        <button class="mt-30 text-xl p-2 border-b-1 flex hover:bg-white hover:text-black">View More
-          <img class="h-full w-auto ml-20" src="../../assets/arrow-right.svg" />
+        <button class="text-xl border-b-1 flex hover:bg-white hover:text-black px-2 py-2">View More
+          <img class="ml-20" src="../../assets/arrow-right.svg" />
         </button>
       </div>
     </div>
 
-    <div class="w-1/2 aspect-square border-t-2 border-l-1 relative">
-      <img class="w-full h-auto object-cover -z-10 absolute opacity-50" src="../../assets/schedule_bg.png" />
-      <div class="text-6xl text-center h-full w-full flex flex-col items-center justify-center font-bold">
+    <div class="w-full md:w-1/2 aspect-square border-t-2 md:border-l-1 bg-[url('/schedule_bg.png')] bg-cover flex items-center justify-center">
+      <div class="text-6xl text-center flex flex-col items-center justify-center font-bold gap-y-8">
         Schedule
-        <button class="mt-30 text-xl p-2 border-b-1 flex hover:bg-white hover:text-black">View More
-          <img class="h-full w-auto ml-20" src="../../assets/arrow-right.svg" />
+        <button class="text-xl border-b-1 flex hover:bg-white hover:text-black px-2 py-2">View More
+          <img class="ml-20" src="../../assets/arrow-right.svg" />
         </button>
       </div>
     </div>
