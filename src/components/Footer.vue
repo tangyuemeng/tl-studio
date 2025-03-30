@@ -14,17 +14,25 @@
     </div>
 
     <div class="flex flex-col w-full bg-white items-center justify-center">
-        <h2 class="text-black mt-32 text-6xl p-2 w-3/5 font-bold text-center">Boost your productivity. Start using our
-            app today.</h2>
-        <p class="text-black text-xl w-3/5 text-center p-6">Incididunt sint fugiat pariatur cupidatat consectetur sit
-            cillum anim id veniam aliqua proident excepteur commodo do ea.</p>
-        <button class="text-white bg-black text-lg px-4 py-2 rounded-full mb-[50px]">Contact Us</button>
+        <h2 class="text-black mt-32 text-6xl font-bold text-center my-4">More than a dance studio</h2>
+        <p class="text-black text-xl text-center">it's the ultimate hub for the dance scene.</p>
+        <p class="text-black text-xl text-center  mb-[50px]">Step in, stand out!</p>
+        <button
+            class="text-white bg-black text-lg px-4 py-2 rounded-full mb-[50px] hover:bg-white hover:text-black border-black border-1">Contact
+            Us</button>
     </div>
 
     <div class="w-full border-t border-black bg-white text-black text-sm px-[50px] py-8">
         <div class="mx-auto flex flex-col gap-6">
             <div class="flex flex-col items-start md:flex-row md:gap-[70px] text-center md:text-left text-gray-700">
                 <b class="text-[14px] text-black mb-4 md:mb-0 max-md:mx-auto">BUZZ Group Inc.</b>
+                <div class="md:w-[500px] w-full flex flex-col items-start gap-1 text-[#909090] mb-4">
+                    <p class="max-md:mx-auto">Address : 東京都港区赤坂2-13-20 ツムギビル</p>
+                    <p class="max-md:mx-auto">Phone : 03-6300-4004</p>
+                    <p class="max-md:mx-auto">E-mail : info@buzz-st.com</p>
+                </div>
+
+                <b class="text-[14px] text-black mb-4 md:mb-0 max-md:mx-auto">TL Studio Inc.</b>
                 <div class="md:w-[500px] w-full flex flex-col items-start gap-1 text-[#909090]">
                     <p class="max-md:mx-auto">Address : 東京都新宿区北新宿1-1-20 プリオール三信ビルB1</p>
                     <p class="max-md:mx-auto">Phone : 070-3179-0613</p>
