@@ -1,9 +1,8 @@
 <template>
   <Header />
   <div class="w-screen h-screen">
-    <video ref="backgroundVideo" autoplay loop muted playsinline class="absolute top-0 left-0 w-screen h-screen object-cover">
-      <!-- <source src="../../assets/background.mp4" type="video/mp4" /> -->
-      <!-- <source type="video/mp4" /> -->
+    <video ref="backgroundVideo" autoplay loop muted playsinline
+      class="absolute top-0 left-0 w-screen h-screen object-cover">
     </video>
   </div>
 
@@ -54,8 +53,8 @@ const backgroundVideo = ref(null);
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
 
 onMounted(async () => {
-    const response = await fetch('/background.mp4'); 
-    const blob = await response.blob();
-    backgroundVideo.value.src =  URL.createObjectURL(blob);
+  const response = await fetch('/background.mp4');
+  const blob = await response.blob();
+  backgroundVideo.value.src = URL.createObjectURL(blob);
 });
 </script>
