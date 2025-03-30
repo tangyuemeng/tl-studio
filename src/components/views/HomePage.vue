@@ -1,8 +1,12 @@
 <template>
   <Header />
   <div class="w-screen h-screen">
-    <video autoplay loop muted playsinline class="absolute top-0 left-0 w-screen h-screen object-cover">
+    <video autoplay loop muted playsinline class="absolute top-0 left-0 w-screen h-screen object-cover hidden sm:block">
       <source src="../../assets/background.mp4" type="video/mp4" />
+    </video>
+
+    <video autoplay loop muted playsinline class="absolute top-0 left-0 w-screen h-screen object-cover md:hidden">
+      <source src="../../assets/background-mobile.mp4" type="video/mp4" />
     </video>
   </div>
 
