@@ -1,6 +1,6 @@
 // src/router/index.js
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "../components/views/HomePage.vue"
+import HomePage from "../components/views/HomePage.vue";
 
 const routes = [
   {
