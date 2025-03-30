@@ -1,12 +1,9 @@
 <template>
   <Header />
   <div class="w-screen h-screen">
-    <video autoplay loop muted playsinline class="absolute top-0 left-0 w-screen h-screen object-cover hidden sm:block">
-      <source src="../../assets/background.mp4" type="video/mp4" />
-    </video>
-
-    <video autoplay loop muted playsinline class="absolute top-0 left-0 w-screen h-screen object-cover md:hidden">
-      <source src="../../assets/background-mobile.mp4" type="video/mp4" />
+    <video ref="backgroundVideo" autoplay loop muted playsinline class="absolute top-0 left-0 w-screen h-screen object-cover">
+      <!-- <source src="../../assets/background.mp4" type="video/mp4" /> -->
+      <!-- <source type="video/mp4" /> -->
     </video>
   </div>
 
@@ -52,6 +49,13 @@
 import Header from '../Header.vue'
 import Footer from '../Footer.vue';
 import Spline from 'spline-vue/v3';
-import { ref } from "vue";
+import { onMounted, ref } from 'vue';
+const backgroundVideo = ref(null);
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
+
+onMounted(async () => {
+    const response = await fetch('/background.mp4'); 
+    const blob = await response.blob();
+    backgroundVideo.value.src =  URL.createObjectURL(blob);
+});
 </script>
