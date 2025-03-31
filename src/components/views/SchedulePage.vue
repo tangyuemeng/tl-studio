@@ -1,22 +1,11 @@
 <template>
     <Header />
-    <div class="text-8xl font-bold text-center px-4 py-10">SCHEDULE</div>
+    <div class="md:text-8xl font-bold text-center px-4 py-10 text-5xl">SCHEDULE</div>
 
-    <div class="px-4 py-8 flex justify-between items-center hidden sm:block">
-        <vue-cal class="w-full h-[500px]" sm :events="events" v-bind="config">
-            <template v-slot:event="{ event }">
-                <div class="flex flex-col px-2 py-4">
-                    <span class="event-title text-5xl text-white">{{ event.title }}</span>
-                    <span class="event-time">{{ event.start }}</span>
-                </div>
-            </template>
-        </vue-cal>
+    <div class="flex flex-col w-full mb-4">
+        <vue-cal date-picker :events="events" v-model="selectedDate" v-bind="mobileConfig"
+            @cell-click="onDateClick"></vue-cal>
     </div>
-
-    <!-- <div class="block md:hidden flex flex-col w-full">
-        <vue-cal date-picker class="w-full h-[500px]" :events="events"  v-bind="config"></vue-cal>
-
-    </div> -->
 
     <Footer />
 </template>
@@ -37,32 +26,84 @@ config.value['title-bar'] = false
 config.value['views-bar'] = false
 config.value['hide-weekdays'] = ['mon', 'sun']
 
-const events = ref([
-{
-        start: '2025-03-29 11:00:00',
-        end: '2025-03-29 12:00:00',
-        title: 'Dance Class 2',
-        class:"lunch"
-    },
-])
+const mobileConfig = ref({
+    theme: false
+})
+mobileConfig.value['title-bar'] = true
+mobileConfig.value['views-bar'] = false
+mobileConfig.value['hide-weekdays'] = ['mon', 'sun']
+mobileConfig.value['today-button'] = false
 
-console.log(events.value);
+const events = ref([
+    { start: new Date(2025, 3, 1, 0, 0), end: new Date(2025, 3, 1, 23, 59), title: '会议 A' },
+    { start: new Date(2025, 3, 2, 0, 0), end: new Date(2025, 3, 2, 23, 59), title: '会议 B' },
+    { start: new Date(2025, 3, 2, 0, 0), end: new Date(2025, 3, 2, 23, 59), title: '会议 C' },
+]);
+
+// 选中的日期
+const selectedDate = ref(null);
+
+// 处理日期点击事件
+const onDateClick = (date) => {
+    const startDate = new Date(date.cell.start);
+    const weekday = startDate.getDay();
+    const apiUrl = "https://getclasses-yb6lhgvh4q-uc.a.run.app/";
+
+    fetch(`${apiUrl}?weekday=${weekday}`)
+        .then(response => response.json())
+        .then(classes => {
+            console.log('获取的课程数据:', classes);
+        })
+        .catch(error => {
+            console.error('error:', error);
+        });
+};
 </script>
 
 <style lang="css">
 @reference "../../style.css";
+
 .vuecal__body {
     @apply h-auto
 }
+
+.vuecal__header {
+    @apply mb-4
+}
+
+.vuecal__header nav {
+    background-color: transparent;
+}
+
+.vuecal__headings {
+    @apply h-auto
+}
+
+.vuecal__nav {
+    @apply px-4 py-2
+}
+
+.vuecal__title {
+    @apply text-3xl font-bold
+}
+
 .vuecal__weekday {
-    @apply px-10 py-4 justify-between flex justify-between border-1 font-bold text-xl
+    @apply px-10 py-4 flex justify-center font-bold text-xl
 }
 
 .vuecal__cell {
-    @apply border-l-1 mt-8 border-r-1 border-b-1
+    @apply py-4
 }
 
 .vuecal__event {
-    @apply relative 
+    @apply relative
+}
+
+.vuecal__cell--selected {
+    @apply after:content-[''] after:absolute after:inset-0 after:m-auto after:w-12 after:h-12 after:rounded-full after:border-[2px] after:border-white
+}
+
+.vuecal__cell--today {
+    @apply text-black after:content-[''] after:absolute after:inset-0 after:m-auto after:w-12 after:h-12 after:rounded-full after:bg-white after:bg-white after:-z-10
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <Header />
   <div class="w-screen h-screen">
-    <video ref="backgroundVideo" autoplay loop muted playsinline
+    <video ref="backgroundVideo" autoplay loop muted playsinline webkit-playsinline
       class="absolute top-0 left-0 w-screen h-screen object-cover">
     </video>
   </div>
