@@ -2,7 +2,9 @@
   <Header />
   <div class="w-screen h-screen">
     <video id="backgroundVideo" muted loop playsinline
-      class="absolute top-0 left-0 w-full h-full object-cover"></video>
+      class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="https://tldancestudio.com/background.mp4" type="video/mp4">
+    </video>
   </div>
 
   <div class="flex flex-col w-full font-bold items-center justify-center">
@@ -51,20 +53,5 @@ import { ref } from 'vue';
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
 import { onMounted } from "vue";
 
-onMounted(() => {
-  const video = document.getElementById("backgroundVideo");
-  const videoSrc = "/background.m3u8";
-
-  if (video.canPlayType("application/vnd.apple.mpegurl")) {
-    video.src = videoSrc;
-  } else {
-    import("hls.js").then(({ default: Hls }) => {
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-      }
-    });
-  }
-});
+onMounted(() => {});
 </script>
