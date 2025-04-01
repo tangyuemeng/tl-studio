@@ -52,20 +52,33 @@ import Spline from 'spline-vue/v3';
 import { ref, onMounted } from 'vue';
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
 
-onMounted(() => {
+import Hls from "hls.js";
+
+onMounted(async () => {
   const video = document.getElementById("backgroundVideo");
   const videoSrc = "https://tldancestudio.com/background.m3u8";
 
-  if (video.canPlayType("application/vnd.apple.mpegurl")) {
-    video.src = videoSrc;
-  } else {
-    import("hls.js").then(({ default: Hls }) => {
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-      }
-    });
+  try {
+    // 先尝试 fetch 预加载 .m3u8，确保不会被缓存影响
+    const response = await fetch(videoSrc, { cache: "no-store" });
+    if (!response.ok) throw new Error("Failed to load .m3u8");
+
+    const text = await response.text();
+    const blob = new Blob([text], { type: "application/vnd.apple.mpegurl" });
+    const url = URL.createObjectURL(blob);
+
+    // iPhone 直接支持 HLS
+    if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      video.src = url;
+    } else if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(url);
+      hls.attachMedia(video);
+    }
+
+    video.play().catch(err => console.error("自动播放失败", err));
+  } catch (err) {
+    console.error("HLS 预加载失败", err);
   }
 });
 </script>
