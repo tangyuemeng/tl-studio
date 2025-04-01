@@ -1,6 +1,6 @@
 <template>
     <Header />
-    <div class="md:text-8xl font-bold text-center px-4 py-10 text-5xl">SCHEDULE</div>
+    <div class="md:text-8xl font-bold text-center px-4 py-10 text-5xl mt-[4.5rem]">SCHEDULE</div>
 
     <div class="flex flex-col w-full md:flex-row mb-4 px-1">
         <vue-cal class="md:w-1/2" date-picker v-model="selectedDate" v-bind="config"
