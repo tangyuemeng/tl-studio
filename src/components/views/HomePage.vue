@@ -1,7 +1,7 @@
 <template>
   <Header />
   <div class="w-screen h-screen">
-    <video id="backgroundVideo" muted loop playsinline
+    <video id="backgroundVideo" autoplay muted loop playsinline preload="auto"
       class="absolute top-0 left-0 w-full h-full object-cover">
       <source src="https://tldancestudio.com/background.mp4" type="video/mp4">
     </video>
