@@ -2,7 +2,9 @@
   <Header />
   <div class="w-screen h-screen">
     <video id="backgroundVideo" autoplay muted loop playsinline
-      class="absolute top-0 left-0 w-full h-full object-cover"></video>
+      class="absolute top-0 left-0 w-full h-full object-cover">
+      <source src="" type="application/vnd.apple.mpegurl">
+    </video>
   </div>
 
   <div class="flex flex-col w-full font-bold items-center justify-center">
@@ -47,13 +49,12 @@
 import Header from '../Header.vue'
 import Footer from '../Footer.vue';
 import Spline from 'spline-vue/v3';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
-import { onMounted } from "vue";
 
 onMounted(() => {
   const video = document.getElementById("backgroundVideo");
-  const videoSrc = "/background.m3u8";
+  const videoSrc = "https://tldancestudio.com/background.m3u8";
 
   if (video.canPlayType("application/vnd.apple.mpegurl")) {
     video.src = videoSrc;
