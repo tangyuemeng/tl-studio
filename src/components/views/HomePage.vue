@@ -1,10 +1,8 @@
 <template>
   <Header />
   <div class="w-screen h-screen">
-    <video autoplay loop muted playsinline webkit-playsinline
-      class="absolute top-0 left-0 w-screen h-screen object-cover">
-      <source :src="backgroundVideoUrl" type="video/mp4" />
-    </video>
+    <video id="backgroundVideo" autoplay muted loop playsinline
+      class="absolute top-0 left-0 w-full h-full object-cover"></video>
   </div>
 
   <div class="flex flex-col w-full font-bold items-center justify-center">
@@ -50,6 +48,23 @@ import Header from '../Header.vue'
 import Footer from '../Footer.vue';
 import Spline from 'spline-vue/v3';
 import { ref } from 'vue';
-const backgroundVideoUrl = ref("https://firebasestorage.googleapis.com/v0/b/tl-studio-2a05d.firebasestorage.app/o/background_video%2Foptimized.mp4?alt=media&token=323f7ae0-cd79-437e-b496-a91e3ef3ebce");
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
+import { onMounted } from "vue";
+
+onMounted(() => {
+  const video = document.getElementById("backgroundVideo");
+  const videoSrc = "/background.m3u8";
+
+  if (video.canPlayType("application/vnd.apple.mpegurl")) {
+    video.src = videoSrc;
+  } else {
+    import("hls.js").then(({ default: Hls }) => {
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+      }
+    });
+  }
+});
 </script>

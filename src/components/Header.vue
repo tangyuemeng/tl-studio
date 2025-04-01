@@ -4,7 +4,7 @@
     ref="header">
 
     <router-link to="/">
-      <img class="h-[30px] md:h-[42px] w-full ml-2 md:ml-10" src="/logo-white.svg" alt="Logo" />
+      <img class="h-[30px] md:h-[42px] ml-2 md:ml-10" src="/logo-white.svg" alt="Logo" />
     </router-link>
 
     <nav class="mr-20 mt-2 hidden md:flex">
