@@ -3,9 +3,9 @@
 #EXT-X-TARGETDURATION:6
 #EXT-X-MEDIA-SEQUENCE:0
 #EXTINF:6.166667,
-background0.ts.bin
+background0.ts
 #EXTINF:4.600000,
-background1.ts.bin
+background1.ts
 #EXTINF:4.666667,
-background2.ts.bin
+background2.ts
 #EXT-X-ENDLIST
