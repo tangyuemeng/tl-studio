@@ -1,10 +1,8 @@
 <template>
   <Header />
   <div class="w-screen h-screen">
-    <video id="backgroundVideo" autoplay muted loop playsinline
-      class="absolute top-0 left-0 w-full h-full object-cover">
-      <source src="" type="application/vnd.apple.mpegurl">
-    </video>
+    <video id="backgroundVideo" muted loop playsinline
+      class="absolute top-0 left-0 w-full h-full object-cover"></video>
   </div>
 
   <div class="flex flex-col w-full font-bold items-center justify-center">
@@ -49,36 +47,24 @@
 import Header from '../Header.vue'
 import Footer from '../Footer.vue';
 import Spline from 'spline-vue/v3';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
+import { onMounted } from "vue";
 
-import Hls from "hls.js";
-
-onMounted(async () => {
+onMounted(() => {
   const video = document.getElementById("backgroundVideo");
-  const videoSrc = "https://tldancestudio.com/background.m3u8";
+  const videoSrc = "/background.m3u8";
 
-  try {
-    // 先尝试 fetch 预加载 .m3u8，确保不会被缓存影响
-    const response = await fetch(videoSrc, { cache: "no-store" });
-    if (!response.ok) throw new Error("Failed to load .m3u8");
-
-    const text = await response.text();
-    const blob = new Blob([text], { type: "application/vnd.apple.mpegurl" });
-    const url = URL.createObjectURL(blob);
-
-    // iPhone 直接支持 HLS
-    if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = url;
-    } else if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(url);
-      hls.attachMedia(video);
-    }
-
-    video.play().catch(err => console.error("自动播放失败", err));
-  } catch (err) {
-    console.error("HLS 预加载失败", err);
+  if (video.canPlayType("application/vnd.apple.mpegurl")) {
+    video.src = videoSrc;
+  } else {
+    import("hls.js").then(({ default: Hls }) => {
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+      }
+    });
   }
 });
 </script>
