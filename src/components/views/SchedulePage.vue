@@ -47,7 +47,7 @@ const selectedDate = ref(null);
 const onDateClick = (date) => {
     const startDate = new Date(date.cell.start);
     const weekday = startDate.getDay();
-    const apiUrl = "https://getclasses-yb6lhgvh4q-uc.a.run.app/";
+    const apiUrl = "https://getclasses-yb6lhgvh4q-an.a.run.app/";
 
     fetch(`${apiUrl}?weekday=${weekday}`)
         .then(response => response.json())
