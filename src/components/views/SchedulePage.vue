@@ -2,61 +2,97 @@
     <Header />
     <div class="md:text-8xl font-bold text-center px-4 py-10 text-5xl">SCHEDULE</div>
 
-    <div class="flex flex-col w-full mb-4">
-        <vue-cal date-picker :events="events" v-model="selectedDate" v-bind="mobileConfig"
+    <div class="flex flex-col w-full md:flex-row mb-4 px-1">
+        <vue-cal class="md:w-1/2" date-picker v-model="selectedDate" v-bind="config"
             @cell-click="onDateClick"></vue-cal>
-    </div>
 
+        <div class="flex flex-col md:w-1/2">
+            <div class="px-6 py-4 font-bold text-black bg-white justify-between flex text-2xl">
+                <div>
+                    <span>{{ currentDate.getDate() }}</span>
+                    <span v-if="isToday"> - Today</span>
+                </div>
+                <div class="ml-auto">
+                    <span>{{ weekdayName }}</span>
+                </div>
+            </div>
+
+            <div v-for="(item, index) in classes" :key="index"
+                class="px-4 pt-4 shadow-md border-b-1 font-bold text-white justify-between flex border-l-1 border-r-1">
+                <div>
+                    <p class="text-sm">{{ item.startTime }} - {{ item.endTime }}</p>
+                    <h3 class="text-3xl mb-7">{{ item.name }}</h3>
+                    <p class="text-sm flex items-center before:content-[''] before:w-3 before:h-3 before:rounded-full before:mr-2"
+                        :class="{
+                            'before:bg-sky-400': item.difficulty?.name === '超入门',
+                            'before:bg-green-400': item.difficulty?.name === '初级',
+                            'before:bg-orange-400': item.difficulty?.name === '中级'
+                        }">
+                        {{ item.difficulty?.name || '' }}
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center justify-center">
+                    <img v-if="item.instructor?.imgUrl" :src="item.instructor.imgUrl" alt="Instructor"
+                        class="w-20 h-20 rounded-full mb-2 object-cover shadow-md">
+                    <p class="text-sm mb-2">{{ item.instructor.name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <Footer />
 </template>
 
 <script setup>
 import Header from '../Header.vue'
 import Footer from '../Footer.vue';
-import { ref } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { VueCal } from 'vue-cal'
 import 'vue-cal/style'
 
 const config = ref({
-    time: false,
-    views: ['day', 'week'],
     theme: false
 })
-config.value['title-bar'] = false
+config.value['title-bar'] = true
 config.value['views-bar'] = false
 config.value['hide-weekdays'] = ['mon', 'sun']
+config.value['today-button'] = false
 
-const mobileConfig = ref({
-    theme: false
-})
-mobileConfig.value['title-bar'] = true
-mobileConfig.value['views-bar'] = false
-mobileConfig.value['hide-weekdays'] = ['mon', 'sun']
-mobileConfig.value['today-button'] = false
+const classes = ref([]);
+const currentDate = ref(new Date());
+const weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const weekdayName = computed(() => weekdayNames[currentDate.value.getDay()]);
+const isToday = computed(() => {
+  const today = new Date();
+  return today.toDateString() === currentDate.value.toDateString();
+});
 
-const events = ref([
-    { start: new Date(2025, 3, 1, 0, 0), end: new Date(2025, 3, 1, 23, 59), title: '会议 A' },
-    { start: new Date(2025, 3, 2, 0, 0), end: new Date(2025, 3, 2, 23, 59), title: '会议 B' },
-    { start: new Date(2025, 3, 2, 0, 0), end: new Date(2025, 3, 2, 23, 59), title: '会议 C' },
-]);
-
-// 选中的日期
-const selectedDate = ref(null);
-
-// 处理日期点击事件
-const onDateClick = (date) => {
-    const startDate = new Date(date.cell.start);
-    const weekday = startDate.getDay();
+const fetchClasses = async (weekday) => {
     const apiUrl = "https://getclasses-yb6lhgvh4q-an.a.run.app/";
 
-    fetch(`${apiUrl}?weekday=${weekday}`)
-        .then(response => response.json())
-        .then(classes => {
-            console.log('获取的课程数据:', classes);
-        })
-        .catch(error => {
-            console.error('error:', error);
-        });
+    try {
+        const response = await fetch(`${apiUrl}?weekday=${weekday}`);
+        if (!response.ok) throw new Error("API Fetch Error");
+
+        const data = await response.json();
+        classes.value = data;
+    } catch (error) {
+        console.error("获取课程失败:", error);
+        classes.value = [];
+    }
+};
+
+onMounted(() => {
+    let today = currentDate.value.getDay();
+    fetchClasses(today);
+});
+
+const onDateClick = async (date) => {
+    const startDate = new Date(date.cell.start);
+    currentDate.value = startDate
+    let weekday = currentDate.value.getDay();
+
+    await fetchClasses(weekday);
 };
 </script>
 

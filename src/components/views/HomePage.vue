@@ -1,8 +1,9 @@
 <template>
   <Header />
   <div class="w-screen h-screen">
-    <video ref="backgroundVideo" autoplay loop muted playsinline webkit-playsinline
+    <video autoplay loop muted playsinline webkit-playsinline
       class="absolute top-0 left-0 w-screen h-screen object-cover">
+      <source :src="backgroundVideoUrl" type="video/mp4" />
     </video>
   </div>
 
@@ -48,13 +49,7 @@
 import Header from '../Header.vue'
 import Footer from '../Footer.vue';
 import Spline from 'spline-vue/v3';
-import { onMounted, ref } from 'vue';
-const backgroundVideo = ref(null);
+import { ref } from 'vue';
+const backgroundVideoUrl = ref("https://firebasestorage.googleapis.com/v0/b/tl-studio-2a05d.firebasestorage.app/o/background_video%2Fbackground.mp4?alt=media&token=22703707-b10e-4d39-bd63-2e63c48f9905");
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
-
-onMounted(async () => {
-  const response = await fetch('/background.mp4');
-  const blob = await response.blob();
-  backgroundVideo.value.src = URL.createObjectURL(blob);
-});
 </script>
