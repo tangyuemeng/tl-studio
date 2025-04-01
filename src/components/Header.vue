@@ -1,6 +1,6 @@
 <template>
   <header
-    class="text-white md:p-5 py-2 pl-2 flex flex-row justify-between items-center w-screen fixed top-0 z-10 backdrop-blur-lg shadow-md bg-opacity-30"
+    class="text-white md:p-5 px-4 py-2 flex flex-row justify-between items-center w-screen fixed top-0 z-10 backdrop-blur-lg shadow-md bg-opacity-30"
     ref="header">
 
     <router-link to="/">
