@@ -50,6 +50,6 @@ import Header from '../Header.vue'
 import Footer from '../Footer.vue';
 import Spline from 'spline-vue/v3';
 import { ref } from 'vue';
-const backgroundVideoUrl = ref("https://firebasestorage.googleapis.com/v0/b/tl-studio-2a05d.firebasestorage.app/o/background_video%2Fbackground.mp4?alt=media&token=22703707-b10e-4d39-bd63-2e63c48f9905");
+const backgroundVideoUrl = ref("https://firebasestorage.googleapis.com/v0/b/tl-studio-2a05d.firebasestorage.app/o/background_video%2Foptimized.mp4?alt=media&token=323f7ae0-cd79-437e-b496-a91e3ef3ebce");
 const sceneUrl = ref("https://prod.spline.design/ZqObrI6U3umgOcD1/scene.splinecode");
 </script>
