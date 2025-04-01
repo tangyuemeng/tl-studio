@@ -124,7 +124,7 @@ const onDateClick = async (date) => {
 }
 
 .vuecal__weekday {
-    @apply px-10 py-4 flex justify-center font-bold text-xl
+    @apply  py-4 flex justify-center font-bold text-xl
 }
 
 .vuecal__cell {

@@ -17,11 +17,11 @@
     </nav>
 
     <div class="mt-2 md:hidden flex items-center">
-      <button class="mr-2">
+      <button class="mr-2 h-[42px] w-[42px]">
         <img class="h-[42px] w-[42px]" src="/qrcode.svg" alt="Qrcode" />
       </button>
 
-      <button class="" @click="toggleMenu">
+      <button class="h-[42px] w-[42px]" @click="toggleMenu">
         <img :src="menuImage" class="h-[30px] w-[30px] transform scale-x-[-1]" alt="Menu Icon" />
       </button>
     </div>
