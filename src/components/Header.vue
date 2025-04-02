@@ -17,7 +17,7 @@
     </nav>
 
     <div class="mt-2 md:hidden flex items-center">
-      <button class="mr-2 h-[42px] w-[42px]">
+      <button class="mr-2 h-[42px] w-[42px]" @click="toggleQR">
         <img class="h-[42px] w-[42px]" src="/qrcode.svg" alt="Qrcode" />
       </button>
 
@@ -25,21 +25,33 @@
         <img :src="menuImage" class="h-[30px] w-[30px] transform scale-x-[-1]" alt="Menu Icon" />
       </button>
     </div>
-
-    <DropdownMenu v-if="isMenuOpen" class="transition-transform transform duration-1000 ease-in-out translate-y-2 opacity-0" :class="{'translate-y-0 opacity-100': isMenuOpen}"/>
+    <DropDownQR v-if="isQROpen" class="transition-transform transform duration-1000 ease-in-out translate-y-2 opacity-0"
+      :class="{ 'translate-y-0 opacity-100': isQROpen }" />
+    <DropdownMenu v-if="isMenuOpen"
+      class="transition-transform transform duration-1000 ease-in-out translate-y-2 opacity-0"
+      :class="{ 'translate-y-0 opacity-100': isMenuOpen }" />
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import DropdownMenu from './DropdownMenu.vue';
+import DropDownQR from './DropDownQR.vue';
 
 const isMenuOpen = ref(false);
+const isQROpen = ref(false);
 const menuImage = ref('/menu.svg');
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
+  isQROpen.value = false;
   menuImage.value = menuImage.value === '/menu.svg' ? '/x.svg' : '/menu.svg';
+};
+
+const toggleQR = () => {
+  isMenuOpen.value = false;
+  isQROpen.value = !isQROpen.value;
+  menuImage.value = '/menu.svg'
 };
 </script>
 

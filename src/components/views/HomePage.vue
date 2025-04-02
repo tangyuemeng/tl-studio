@@ -1,8 +1,8 @@
 <template>
   <Header />
-  <div class="w-screen h-screen">
+  <div class="w-full h-full mt-15">
     <video autoplay muted loop playsinline
-      class="absolute top-0 left-0 w-full h-full object-cover">
+      class="w-full h-full object-cover">
       <source src="https://firebasestorage.googleapis.com/v0/b/tl-studio-2a05d.firebasestorage.app/o/background_video%2Foptimized.mp4?alt=media&token=323f7ae0-cd79-437e-b496-a91e3ef3ebce" type="video/mp4">
     </video>
   </div>
