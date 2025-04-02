@@ -3,7 +3,7 @@
   <div class="w-screen h-screen">
     <video autoplay muted loop playsinline
       class="absolute top-0 left-0 w-full h-full object-cover">
-      <source src="https://tldancestudio.com/background.mp4" type="video/mp4">
+      <source src="https://tldancestudio.com/BUZZGROUP.mp4" type="video/mp4">
     </video>
   </div>
 
