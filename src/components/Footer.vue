@@ -1,15 +1,20 @@
 <template>
     <div class="flex w-full flex-col md:flex-row">
         <button
-            class="text-xl text-center md:w-1/2 w-full border-t-2 md:border-r-1 relative flex flex-col items-center justify-center font-bold py-20 bg-black">
-            FAQ
-            <p class="text-5xl mt-2">FAQ</p>
+            class="text-xl text-center md:w-1/2 w-full border-t-2 md:border-b-2 md:border-r-1 relative flex flex-col items-center justify-center font-bold py-20">
+            <router-link to="/faq">
+                FAQ
+                <p class="text-5xl mt-2">FAQ</p>
+            </router-link>
         </button>
 
+
         <button
-            class="text-xl text-center md:w-1/2 w-full border-t-2 md:border-l-1 relative flex flex-col items-center justify-center font-bold py-20 bg-black">
-            CONTACT US
-            <p class="text-5xl mt-2">CONTACT US</p>
+            class="text-xl text-center md:w-1/2 w-full border-t-2 border-b-2 md:border-l-1 relative flex flex-col items-center justify-center font-bold py-20">
+            <router-link to="/contact">
+                CONTACT US
+                <p class="text-5xl mt-2">CONTACT US</p>
+            </router-link>
         </button>
     </div>
 
@@ -17,9 +22,11 @@
         <h2 class="text-black mt-32 text-6xl font-bold text-center my-4">More than a dance studio</h2>
         <p class="text-black text-xl text-center">it's the ultimate hub for the dance scene.</p>
         <p class="text-black text-xl text-center  mb-[50px]">Step in, stand out!</p>
-        <button
-            class="text-white bg-black text-lg px-4 py-2 rounded-full mb-[50px] hover:bg-white hover:text-black border-black border-1">Contact
-            Us</button>
+        <router-link to="/contact">
+            <button
+                class="text-white bg-black text-lg px-4 py-2 rounded-full mb-[50px] hover:bg-white hover:text-black border-black border-1">Contact
+                Us</button>
+        </router-link>
     </div>
 
     <div class="w-full border-t border-black bg-white text-black text-sm px-[50px] py-8">
@@ -46,13 +53,19 @@
                     <div class="flex gap-4"><a class="hover:underline" href="/terms-of-service">Terms of Use</a><a
                             class="hover:underline" href="/privacy-policy">Privacy Policy</a></div>
                 </div>
-                <div class="flex gap-4 FSnsButton"><a target="_blank"
-                        href="https://www.youtube.com/channel/UCw8ZhLPdQ0u_Y-TLKd61hGA"><button
-                            class="w-10 h-10 rounded-full flex items-center justify-center bg-ico_youtube_bk"></button></a><a
-                        target="_blank" href="https://www.instagram.com/1milliondance/"><button
-                            class="w-10 h-10 rounded-full flex items-center justify-center bg-ico_instagram_bk"></button></a><a
-                        target="_blank" href="https://vt.tiktok.com/ZSJXWRcge/"><button
-                            class="w-10 h-10 rounded-full flex items-center justify-center bg-ico_tiktok_bk"></button></a>
+                <div
+                    class="w-full font-bold text-lg md:w-1/2 flex md:flex-row md:gap-4 gap-6 items-center text-center justify-center">
+                    <a href="http://weixin.qq.com/r/mp/8RIaAlHEWgwlrRVh90fj">
+                        <img class="w-[24px] h-auto" src="/wechat.svg">
+                    </a>
+                    <a
+                        href="https://www.xiaohongshu.com/user/profile/5f7adb02000000000101ec51?xsec_token=ABD4E5cN-kL9hPyff3AgWRBQiu4_DXjBrSMns8vBz36Kw">
+                        <img class="w-[24px] h-auto" src="/red.svg">
+                    </a>
+                    <a
+                        href="https://www.douyin.com/user/MS4wLjABAAAA25GDBxF5NyXemqljgGHkGBfwF9dTyj-W_01MQEMFvYIdlVPuQmAoeZPpTYxhqvJ5">
+                        <img class="w-[24px] h-auto" src="/tiktok.svg">
+                    </a>
                 </div>
             </div>
 

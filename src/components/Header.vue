@@ -1,15 +1,15 @@
 <template>
   <header
-    class="text-white md:p-5 px-4 py-2 flex flex-row justify-between items-center w-screen fixed top-0 z-10 backdrop-blur-lg shadow-md bg-opacity-30"
+    class="text-white md:p-4 pl-4 py-2 flex flex-row justify-between items-center w-screen fixed top-0 z-10 backdrop-blur-lg bg-opacity-30"
     ref="header">
 
     <router-link to="/">
-      <img class="h-[30px] md:h-[42px] ml-2 md:ml-10" src="/logo-white.svg" alt="Logo" />
+      <img class="h-[30px] md:h-[42px] md:ml-4" src="/logo-white.svg" alt="Logo" />
     </router-link>
 
-    <nav class="mr-20 mt-2 hidden md:flex">
+    <nav class="mr-8 mt-2 hidden md:flex">
       <ul class="flex text-xl font-sans font-bold">
-        <li class="ml-10"><router-link to="/home">About</router-link></li>
+        <li class="ml-10"><router-link to="/aboutus">About</router-link></li>
         <li class="ml-10"><router-link to="/schedule">Schedule</router-link></li>
         <li class="ml-10"><router-link to="/class">Class</router-link></li>
         <li class="ml-10"><router-link to="/contact">Contact</router-link></li>
