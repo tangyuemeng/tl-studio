@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <div class="w-full h-full mt-15">
+  <div class="w-screen h-screen">
     <video autoplay muted loop playsinline
       class="w-full h-full object-cover">
       <source src="https://firebasestorage.googleapis.com/v0/b/tl-studio-2a05d.firebasestorage.app/o/background_video%2Foptimized.mp4?alt=media&token=323f7ae0-cd79-437e-b496-a91e3ef3ebce" type="video/mp4">
@@ -16,9 +16,9 @@
         </button>
       </router-link>
     </div>
-    <div class="h-[500px] w-full overflow-hidden -z-10 items-center justify-center flex">
+    <!-- <div class="h-[500px] w-full overflow-hidden -z-10 items-center justify-center flex">
       <Spline class="" :scene="sceneUrl" />
-    </div>
+    </div> -->
   </div>
 
   <div class="flex w-full flex-col md:flex-row">
