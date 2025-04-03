@@ -16,9 +16,9 @@
         </button>
       </router-link>
     </div>
-    <!-- <div class="h-[500px] w-full overflow-hidden -z-10 items-center justify-center flex">
-      <Spline class="" :scene="sceneUrl" />
-    </div> -->
+    <div class="h-[500px] w-full overflow-hidden -z-10 items-center justify-center flex">
+      <!-- <Spline class="" :scene="sceneUrl" /> -->
+    </div>
   </div>
 
   <div class="flex w-full flex-col md:flex-row">
