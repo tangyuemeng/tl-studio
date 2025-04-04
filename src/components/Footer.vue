@@ -1,9 +1,9 @@
 <template>
     <div class="flex w-full flex-col md:flex-row">
         <button
-            class="text-xl text-center md:w-1/2 w-full border-t-2 md:border-b-2 md:border-r-1 relative flex flex-col items-center justify-center font-bold py-20">
+            class="text-lg text-center md:w-1/2 w-full border-t-2 md:border-b-2 md:border-r-1 relative flex flex-col items-center justify-center font-bold py-20">
             <router-link to="/faq">
-                FAQ
+                {{ t('faq') }}
                 <p class="text-5xl mt-2">FAQ</p>
             </router-link>
         </button>
@@ -12,7 +12,7 @@
         <button
             class="text-xl text-center md:w-1/2 w-full border-t-2 border-b-2 md:border-l-1 relative flex flex-col items-center justify-center font-bold py-20">
             <router-link to="/contact">
-                CONTACT US
+                {{ t('contactUs') }}
                 <p class="text-5xl mt-2">CONTACT US</p>
             </router-link>
         </button>
@@ -20,12 +20,13 @@
 
     <div class="flex flex-col w-full bg-white items-center justify-center">
         <h2 class="text-black mt-32 text-6xl font-bold text-center my-4">More than a dance studio</h2>
-        <p class="text-black text-xl text-center">it's the ultimate hub for the dance scene.</p>
-        <p class="text-black text-xl text-center  mb-[50px]">Step in, stand out!</p>
+        <p class="text-black text-xl text-center mb-2">{{ t('homeTitle') }}</p>
+        <p class="text-black text-xl text-center  mb-[50px]">{{ t('homeSubTitle') }}</p>
         <router-link to="/contact">
             <button
-                class="text-white bg-black text-lg px-4 py-2 rounded-full mb-[50px] hover:bg-white hover:text-black border-black border-1">Contact
-                Us</button>
+                class="text-white bg-black text-base font-bold px-4 py-2 rounded-full mb-[50px] hover:bg-white hover:text-black border-black border-1">
+                {{ t('contactUs') }}
+            </button>
         </router-link>
     </div>
 
@@ -55,16 +56,16 @@
                 </div>
                 <div
                     class="w-full font-bold text-lg md:w-1/2 flex md:flex-row md:gap-4 gap-6 items-center text-center justify-center">
-                    <a href="http://weixin.qq.com/r/mp/8RIaAlHEWgwlrRVh90fj">
-                        <img class="w-[24px] h-auto" src="/wechat.svg">
+                    <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=&scene=124#wechat_redirect">
+                        <Wechat class="w-[36px] h-[36px] rounded-full bg-black text-white p-2" />
                     </a>
                     <a
                         href="https://www.xiaohongshu.com/user/profile/5f7adb02000000000101ec51?xsec_token=ABD4E5cN-kL9hPyff3AgWRBQiu4_DXjBrSMns8vBz36Kw">
-                        <img class="w-[24px] h-auto" src="/red.svg">
+                        <Red class="w-[36px] h-[36px] rounded-full bg-black text-white p-2" />
                     </a>
                     <a
                         href="https://www.douyin.com/user/MS4wLjABAAAA25GDBxF5NyXemqljgGHkGBfwF9dTyj-W_01MQEMFvYIdlVPuQmAoeZPpTYxhqvJ5">
-                        <img class="w-[24px] h-auto" src="/tiktok.svg">
+                        <Tiktok class="w-[36px] h-[36px] rounded-full bg-black text-white p-2" />
                     </a>
                 </div>
             </div>
@@ -73,3 +74,11 @@
 
     </div>
 </template>
+
+<script setup>
+import Red from '../assets/red.vue';
+import Wechat from '../assets/wechat.vue';
+import Tiktok from '../assets/tiktok.vue';
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+</script>

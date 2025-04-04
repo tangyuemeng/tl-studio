@@ -13,6 +13,7 @@
         <li class="ml-10"><router-link to="/schedule">Schedule</router-link></li>
         <li class="ml-10"><router-link to="/class">Class</router-link></li>
         <li class="ml-10"><router-link to="/contact">Contact</router-link></li>
+        <li class="ml-10" @click="changeLanguage">Language</li>
       </ul>
     </nav>
 
@@ -22,10 +23,10 @@
       </button>
 
       <button class="h-[42px] w-[42px]" @click="toggleMenu">
-        <img :src="menuImage" class="h-[30px] w-[30px] transform scale-x-[-1]" alt="Menu Icon" />
+        <img :src="menuImage" class="h-[30px] w-[30px] transform duration-300 ease-in-out scale-x-[-1]" alt="Menu Icon" />
       </button>
     </div>
-    <DropDownQR v-if="isQROpen" class="transition-transform transform duration-1000 ease-in-out translate-y-2 opacity-0"
+    <DropDownQR v-if="isQROpen" class="transition-transform transform duration-300 ease-in-out translate-y-2 opacity-0"
       :class="{ 'translate-y-0 opacity-100': isQROpen }" />
     <DropdownMenu v-if="isMenuOpen"
       class="transition-transform transform duration-1000 ease-in-out translate-y-2 opacity-0"
@@ -34,9 +35,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import DropdownMenu from './DropdownMenu.vue';
 import DropDownQR from './DropDownQR.vue';
+import { useI18n } from 'vue-i18n';
+
+const { locale, t } = useI18n();
+
+const changeLanguage = () => {
+  const newLang = locale.value === 'zh' ? 'ja' : 'zh'; 
+  locale.value = newLang;
+};
 
 const isMenuOpen = ref(false);
 const isQROpen = ref(false);
