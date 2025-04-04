@@ -46,9 +46,9 @@
 </template>
 
 <script setup>
-import Red from '../assets/red.vue';
-import Wechat from '../assets/wechat.vue';
-import Tiktok from '../assets/tiktok.vue';
+import Red from './icons/Red.vue';
+import Wechat from './icons/wechat.vue';
+import Tiktok from './icons/tiktok.vue';
 import { useI18n } from 'vue-i18n';
 import { computed } from 'vue';
 

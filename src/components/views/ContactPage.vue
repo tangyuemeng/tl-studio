@@ -67,9 +67,9 @@
 <script setup>
 import Header from '../Header.vue'
 import Footer from '../Footer.vue';
-import Red from '../../assets/Red.vue'
-import Wechat from '../../assets/wechat.vue';
-import Tiktok from '../../assets/tiktok.vue';
+import Red from '../icons/Red.vue'
+import Wechat from '../icons/wechat.vue';
+import Tiktok from '../icons/tiktok.vue';
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 </script>
