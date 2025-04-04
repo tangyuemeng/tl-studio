@@ -51,8 +51,10 @@
             <div class="flex flex-col md:flex-row justify-between items-center gap-7 md:gap-4 md:mt-[40px]">
                 <div class="flex flex-col md:flex-row items-center gap-4"><span>ⓒ 2019 BUZZ TL Inc. All Rights
                         Reserved.</span>
-                    <div class="flex gap-4"><a class="hover:underline" href="/terms-of-service">Terms of Use</a><a
-                            class="hover:underline" href="/privacy-policy">Privacy Policy</a></div>
+                    <div class="flex gap-4">
+                        <router-link to="/terms-of-service" class="hover:underline">Terms of Use</router-link>
+                        <router-link to="/privacy-policy" class="hover:underline">Privacy Policy</router-link>
+                    </div>
                 </div>
                 <div
                     class="w-full font-bold text-lg md:w-1/2 flex md:flex-row md:gap-4 gap-6 items-center text-center justify-center">

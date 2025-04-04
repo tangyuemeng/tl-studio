@@ -6,6 +6,8 @@ import AboutPage from "../components/views/AboutPage.vue";
 import ContactPage from "../components/views/ContactPage.vue";
 import ClassPage from "../components/views/ClassPage.vue";
 import FAQPage from "../components/views/FAQPage.vue"
+import Privacy from "../components/views/Privacy.vue";
+import TermsOfUse from "../components/views/TermsOfUse.vue";
 
 const routes = [
   {
@@ -37,6 +39,16 @@ const routes = [
     path: "/faq",
     name: "FAQ",
     component: FAQPage,
+  },
+  {
+    path: "/terms-of-service",
+    name: "TermsOfUse",
+    component: TermsOfUse,
+  },
+  {
+    path: "/privacy-policy",
+    name: "Privacy",
+    component: Privacy,
   },
 ];
 
