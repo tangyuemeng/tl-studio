@@ -18,7 +18,7 @@
       </router-link>
     </div>
     <div class="h-[500px] w-full overflow-hidden -z-10 items-center justify-center flex">
-      <Spline v-if="sceneUrl"  :scene="sceneUrl" />
+      <Spline v-if="!isMobile"  :scene="sceneUrl" />
     </div>
   </div>
 
@@ -56,15 +56,14 @@
 
 <script setup>
 import Header from '../Header.vue'
-import Footer from '../Footer.vue';
-import Spline from 'spline-vue/v3';
-import { ref, onMounted } from 'vue';
+import Footer from '../Footer.vue'
+import Spline from 'spline-vue/v3'
+import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
-const sceneUrl = ref('');
+const sceneUrl = ref('https://prod.spline.design/umRFvOwLSkmYCQng/scene.splinecode')
+const isMobile = ref(false)
 onMounted(() => {
-  setTimeout(() => {
-    sceneUrl.value = "https://prod.spline.design/umRFvOwLSkmYCQng/scene.splinecode";
-  }, 2000);
+  isMobile.value = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
 });
 </script>
