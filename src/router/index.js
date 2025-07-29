@@ -1,5 +1,5 @@
 // src/router/index.js
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../components/views/HomePage.vue";
 import SchedulePage from "../components/views/SchedulePage.vue";
 import AboutPage from "../components/views/AboutPage.vue";
